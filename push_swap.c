@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:35:14 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/09 18:24:32 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/18 18:07:07 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ int main(int argc, char **argv)
 	stack_a = ft_lstnew(argv[1]);
 	stack_b = ft_lstnew(NULL);
 	populate_list(argc, argv, stack_a);
-	rotate_a(&stack_a, 1);
-	ft_printf("a\n");
+	if (check_duplicates(stack_a))
+		return(write(2, "Error\n", 7));
+	turk_algo(&stack_a, &stack_b);
 	print_list(stack_a);
-	ft_printf("b\n");
-	print_list(stack_b);
 	while(stack_a)
 	{
 		temp = stack_a;

@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Build and Debug Push_Swap",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/push",
+      "args": ["1", "2", "3", "3447483648"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "build push_swap",
+      "miDebuggerPath": "/usr/bin/gdb"
+    }
+  ]
+}
+
