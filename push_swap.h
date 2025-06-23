@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:46:21 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/18 17:33:04 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/23 17:31:23 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void rotate_a_b(t_list **a, t_list **b);
 void revrot_a(t_list **a, int print_flag);
 void revrot_b(t_list **b, int print_flag);
 void revrot_a_b(t_list **a, t_list **b);
-t_list *find_min(t_list *stack);
+t_list	*find_min(t_list *stack);
+t_list	*find_max(t_list *stack);
 int find_min_pos(t_list *stack);
+int	find_max_pos(t_list *stack);
 int a_is_sorted(t_list *a);
 void sort_lst_3(t_list **a);
 void sort_to_b(t_list **a, t_list **b);

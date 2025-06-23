@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:38:18 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/20 17:54:09 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/23 17:30:15 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,41 @@ int	find_min_pos(t_list *stack)
 	min = find_min(stack);
 	i = 0;
 	while (ft_atoi((char *)stack->content) != ft_atoi((char *)min->content))
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
+}
+
+t_list	*find_max(t_list *stack)
+{
+	t_list	*temp;
+	t_list	*max;
+
+	max = stack;
+	while (stack != NULL)
+	{
+		temp = stack->next;
+		while (temp != NULL)
+		{
+			if (ft_atoi((char *)temp->content) > ft_atoi((char *)max->content))
+				max = temp;
+			temp = temp->next;
+		}
+		stack = stack->next;
+	}
+	return (max);
+}
+
+int	find_max_pos(t_list *stack)
+{
+	int		i;
+	t_list	*max;
+
+	max = find_max(stack);
+	i = 0;
+	while (ft_atoi((char *)stack->content) != ft_atoi((char *)max->content))
 	{
 		i++;
 		stack = stack->next;
@@ -92,15 +127,6 @@ void	sort_lst_3(t_list **a)
 	else if (pos1 < pos2 && pos2 > pos3)
 		return (revrot_a(a, 1));
 }
-/* int max = x;
-
-if ((*a)->content == max)
-	rorate a;
-else (*a)->next->content == max
-	rev rotate a;
-if (*a)->content > (*a)->next->content
-	swap a
- */
 
 void sort_to_b(t_list **a, t_list **b)
 {
