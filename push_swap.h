@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:46:21 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/23 17:31:23 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/24 18:42:14 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,22 @@ int	find_max_pos(t_list *stack);
 int a_is_sorted(t_list *a);
 void sort_lst_3(t_list **a);
 void sort_to_b(t_list **a, t_list **b);
+int find_target_node(t_list *a, t_list *b);
 void turk_algo(t_list **a, t_list **b);
+
+/* t_list *temp;
+	int tar;
+	
+	temp = *a;
+	tar = ft_atoi((char *)(*b)->content);
+	while (temp != NULL)
+	{
+		int res = ft_atoi((char *)(*a)->content);
+		if (tar > res)
+			tar = res;
+		temp = temp->next;
+	}
+	return (tar); */
 
 
 

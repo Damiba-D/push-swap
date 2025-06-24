@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:38:18 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/23 17:30:15 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/24 18:50:40 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,13 +128,47 @@ void	sort_lst_3(t_list **a)
 		return (revrot_a(a, 1));
 }
 
+void del(void *content)
+{
+	if (content != NULL)
+		content = NULL;
+}
+
+int find_target_node(t_list *a, t_list *b)
+{
+	int node_b;
+	t_list *temp;
+
+	node_b = ft_atoi((char *)b->content);
+	while(a != NULL)
+	{
+		if (ft_atoi((char *)a->content) > node_b)
+		{
+			temp = ft_lstnew(a->content);
+			break;
+		}
+		a = a->next;
+	}
+	a = a->next;
+	while(a != NULL)
+	{
+		if (ft_atoi((char *)a->content) > node_b)
+			ft_lstadd_back(&temp, a);
+		a = a->next;
+	}
+	a = find_min(temp);
+	ft_lstclear(&temp, del);
+	return (ft_atoi((char *)a->content));
+}
+
 void sort_to_b(t_list **a, t_list **b)
 {
-	if (!b_is_sorted(*b))
-		swap_b(b, 1);
-	if (a)
-		return ;
+	while (ft_lstsize(*a) > 3)
+		push_b(a, b);
+	sort_lst_3(a);
+	ft_printf("%d\n", find_target_node(*a, *b));
 }
+
 
 void turk_algo(t_list **a, t_list **b)
 {
