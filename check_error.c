@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:46:09 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/23 17:41:01 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/25 16:48:48 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,20 @@
 int check_error(int argc, char **argv)
 {
 	int		i;
+	int		j;
 	int		num1;
 	long	num2;
 	
 	i = 1;
 	while (i < argc)
 	{
+		j = 0;
+		while (argv[i][j] != '\0')
+		{
+			if (!ft_isdigit(argv[i][j]))
+				return (-1);
+			j++;
+		}
 		num1 = ft_atoi(argv[i]);
 		num2 = ft_atol(argv[i]);
 		if (num1 != num2)
@@ -30,10 +38,10 @@ int check_error(int argc, char **argv)
 	return (0);
 }
 
-int check_duplicates(t_list *stack)
+int check_duplicates(t_stack *stack)
 {
-	t_list *temp1;
-	t_list *temp2;
+	t_stack *temp1;
+	t_stack *temp2;
 	
 	while (stack)
 	{
@@ -41,7 +49,7 @@ int check_duplicates(t_list *stack)
 		temp2 = stack->next;
 		while (temp2)
 		{
-			if (ft_atoi((char *)temp1->content) == ft_atoi((char *)temp2->content))
+			if (temp1->content == temp2->content)
 			{
 				return (-1);
 			}

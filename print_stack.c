@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_list.c                                       :+:      :+:    :+:   */
+/*   print_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 16:18:18 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/09 12:58:00 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/25 17:29:09 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_list(t_list *list)
+void print_stack(t_stack *stack)
 {
-	while(list)
+	if (stack == NULL)
+		return;
+	while(stack)
 	{
-		if(list->content != NULL)
-			ft_printf("%s\n", (char *)(list->content));
-		list = list->next;
+		ft_printf("%d\n", stack->content);
+		stack = stack->next;
 	}
 }

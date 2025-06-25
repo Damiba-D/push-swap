@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:46:21 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/24 18:42:14 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/25 21:56:56 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,55 @@
 # include "libft/libft.h"
 # include "libft/ft_printf/ft_printf.h"
 # include "libft/get_next_line/get_next_line.h"
+typedef struct s_stack
+{
+	int	content;
+	struct s_stack	*next;
+}	t_stack;
+void	ft_stackadd_back(t_stack **stack, t_stack *new);
+void	ft_stackadd_front(t_stack **stack, t_stack *new);
+void	ft_stackclear(t_stack **stack);
+void	ft_stackdelone(t_stack *stack);
+void	ft_stackiter(t_stack *stack, void (*f)(int));
+t_stack	*ft_stacklast(t_stack *stack);
+t_stack	*ft_stackmap(t_stack *stack, int (*f)(int));
+t_stack	*ft_stacknew(int content);
+int	ft_stacksize(t_stack *stack);
 int check_error(int argc, char **argv);
-int check_duplicates(t_list *stack);
-void populate_list(int argc, char **argv, t_list *list);
-void print_list(t_list *list);
-void swap_a(t_list **a, int print_flag);
-void swap_b(t_list **b, int print_flag);
-void swap_a_b(t_list **a, t_list **b);
-void push_a(t_list **a, t_list **b);
-void push_b(t_list **a, t_list **b);
-void rotate_a(t_list **a, int print_flag);
-void rotate_b(t_list **b, int print_flag);
-void rotate_a_b(t_list **a, t_list **b);
-void revrot_a(t_list **a, int print_flag);
-void revrot_b(t_list **b, int print_flag);
-void revrot_a_b(t_list **a, t_list **b);
-t_list	*find_min(t_list *stack);
-t_list	*find_max(t_list *stack);
-int find_min_pos(t_list *stack);
-int	find_max_pos(t_list *stack);
-int a_is_sorted(t_list *a);
-void sort_lst_3(t_list **a);
-void sort_to_b(t_list **a, t_list **b);
-int find_target_node(t_list *a, t_list *b);
-void turk_algo(t_list **a, t_list **b);
+int check_duplicates(t_stack *stack);
+void populate_stack(int argc, char **argv, t_stack *list);
+void print_stack(t_stack *stack);
+void push_a(t_stack **a, t_stack **b);
+void push_b(t_stack **a, t_stack **b);
+void swap_a(t_stack **a, int print_flag);
+void swap_b(t_stack **b, int print_flag);
+void swap_a_b(t_stack **a, t_stack **b);
+void rotate_a(t_stack **a, int print_flag);
+void rotate_b(t_stack **b, int print_flag);
+void rotate_a_b(t_stack **a, t_stack **b);
+void revrot_a(t_stack **a, int print_flag);
+void revrot_b(t_stack **b, int print_flag);
+void revrot_a_b(t_stack **a, t_stack **b);
+t_stack *find_min(t_stack *stack);
+int find_min_pos(t_stack *stack);
+t_stack *find_max(t_stack *stack);
+int find_max_pos(t_stack *stack);
+int find_node_index(t_stack *stack, int node_value);
+int to_top_cost(t_stack *stack, int node_index);
+int find_total_cost(t_stack *a, t_stack *b);
+int a_is_sorted(t_stack *a);
+int b_is_sorted(t_stack *b);
+void	sort_stack_3(t_stack **a);
+int find_target_node(t_stack *a, t_stack *b);
+int find_cheapest_node(t_stack *a, t_stack *b);
+void sort_to_b(t_stack **a, t_stack **b);
+void turk_algo(t_stack **a, t_stack **b);
+void	a_bring_node_to_top(t_stack **stack, int node_index);
+void	b_bring_node_to_top(t_stack **stack, int node_index);
+
+
+
+
 
 /* t_list *temp;
 	int tar;

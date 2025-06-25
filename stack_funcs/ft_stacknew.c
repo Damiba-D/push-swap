@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushoperations.c                                   :+:      :+:    :+:   */
+/*   ft_stacknew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/06 14:49:54 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/25 17:27:46 by ddamiba          ###   ########.fr       */
+/*   Created: 2025/04/23 14:53:55 by ddamiba           #+#    #+#             */
+/*   Updated: 2025/06/25 16:07:30 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void push_a(t_stack **a, t_stack **b)
+t_stack	*ft_stacknew(int content)
 {
-	t_stack *newnode;
-	
-	if (ft_stacksize(*b) == 0)
-		return ;
-	newnode = *b;
-	*b = (*b)->next;
-	ft_stackadd_front(a, newnode);
-	write(1, "pa\n", 3);
+	t_stack	*stack;
+
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (stack == NULL)
+		return (NULL);
+	stack->content = content;
+	stack->next = NULL;
+	return (stack);
 }
 
-void push_b(t_stack **a, t_stack **b)
+/* int main()
 {
-	t_stack *newnode;
-	
-	if (ft_stacksize(*a) == 0)
-		return ;
-	newnode = *a;
-	*a = (*a)->next;
-	ft_stackadd_front(b, newnode);
-	write(1, "pb\n", 3);
-}
+	t_list *lst = ft_lstnew("Hello World!");
+	printf("%s\n", (char *)lst->content);
+	if (lst->next)
+		printf("Not NULL");
+	return 0;
+} */

@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushoperations.c                                   :+:      :+:    :+:   */
+/*   ft_stackdelone.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/06 14:49:54 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/25 17:27:46 by ddamiba          ###   ########.fr       */
+/*   Created: 2025/06/25 16:00:16 by ddamiba           #+#    #+#             */
+/*   Updated: 2025/06/25 16:02:24 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void push_a(t_stack **a, t_stack **b)
+void	ft_stackdelone(t_stack *stack)
 {
-	t_stack *newnode;
-	
-	if (ft_stacksize(*b) == 0)
+	if (stack == NULL)
 		return ;
-	newnode = *b;
-	*b = (*b)->next;
-	ft_stackadd_front(a, newnode);
-	write(1, "pa\n", 3);
-}
-
-void push_b(t_stack **a, t_stack **b)
-{
-	t_stack *newnode;
-	
-	if (ft_stacksize(*a) == 0)
-		return ;
-	newnode = *a;
-	*a = (*a)->next;
-	ft_stackadd_front(b, newnode);
-	write(1, "pb\n", 3);
+	free(stack);
 }
