@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:46:09 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/25 16:48:48 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/28 16:33:54 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int check_error(int argc, char **argv)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
+			if (argv[i][j] == '-' || argv[i][j] == '+')
+				j++;
 			if (!ft_isdigit(argv[i][j]))
 				return (-1);
 			j++;

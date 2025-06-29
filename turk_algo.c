@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:38:18 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/25 22:02:52 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/29 10:43:34 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,11 +170,13 @@ int find_target_node(t_stack *a, t_stack *b)
 	int node_a;
 	t_stack *b_max;
 	t_stack *a_min;
+	t_stack *a_max;
 
 	b_max = find_max(b);
 	a_min = find_min(a);
+	a_max = find_max(a);
 	node_b = b->content;
-	if (node_b == b_max->content)
+	if (node_b == b_max->content && node_b > a_max->content)
 		return (a_min->content);
 	target_node = INT32_MAX;
 	while(a != NULL)
@@ -184,6 +186,8 @@ int find_target_node(t_stack *a, t_stack *b)
 			target_node = node_a;
 		a = a->next;
 	}
+	if (target_node == INT32_MAX)
+		return (a_min->content);
 	return (target_node);
 }
 
@@ -221,8 +225,11 @@ void	a_bring_node_to_top(t_stack **stack, int node_index)
 			rotate_a(stack, 1);
 	}
 	else
+	{
+		node_index = ft_stacksize(*stack) - node_index;
   		while(node_index--)
 			revrot_a(stack, 1);
+	}
 }
 
 void	b_bring_node_to_top(t_stack **stack, int node_index)
@@ -233,12 +240,16 @@ void	b_bring_node_to_top(t_stack **stack, int node_index)
 			rotate_b(stack, 1);
 	}
 	else
+	{
+		node_index = ft_stacksize(*stack) - node_index;
   		while(node_index--)
 			revrot_b(stack, 1);
+	}
 }
 
 void sort_to_b(t_stack **a, t_stack **b)
 {
+	int cheapest_node_pos;
 	int target_node_pos;
 
 	while (ft_stacksize(*a) > 3)
@@ -246,7 +257,11 @@ void sort_to_b(t_stack **a, t_stack **b)
 	sort_stack_3(a);
 	while (ft_stacksize(*b) > 0)
 	{
-		target_node_pos = find_cheapest_node(*a, *b);
+		cheapest_node_pos = find_cheapest_node(*a, *b);
+		b_bring_node_to_top(b, cheapest_node_pos);
+		target_node_pos = find_node_index(*a, find_target_node(*a, *b));
+		a_bring_node_to_top(a, target_node_pos);
+		push_a(a, b);
 	} 
 }
 
@@ -265,4 +280,6 @@ void turk_algo(t_stack **a, t_stack **b)
 		return (sort_stack_3(a));
 	if (!a_is_sorted(*a))
 		sort_to_b(a, b); 
+	if (!a_is_sorted(*a))
+		a_bring_node_to_top(a, find_min_pos(*a));
 }

@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:35:14 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/25 21:59:11 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/06/29 10:45:42 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ int main(int argc, char **argv)
 	if (check_duplicates(stack_a))
 		return(write(2, "Error\n", 7));
 	turk_algo(&stack_a, &stack_b);
-	print_stack(stack_a);
-	print_stack(stack_b);
+ 	if (a_is_sorted(stack_a))
+		ft_printf("A IS SORTED!\n");
+	//print_stack(stack_a);
 	while(stack_a)
 	{
 		temp = stack_a;
