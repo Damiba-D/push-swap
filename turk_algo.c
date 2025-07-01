@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:38:18 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/29 10:43:34 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/01 21:16:22 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,10 @@ int to_top_cost(t_stack *stack, int node_index)
 int find_total_cost(t_stack *a, t_stack *b)
 {
 	int total_cost;
+	int target_node;
 
-	total_cost = to_top_cost(b, find_node_index(b, b->content)) + to_top_cost(a, find_target_node(a, b));
+	target_node = find_target_node(a, b);
+	total_cost = to_top_cost(a, find_node_index(a, target_node));
 	return (total_cost);
 }
 
@@ -247,20 +249,59 @@ void	b_bring_node_to_top(t_stack **stack, int node_index)
 	}
 }
 
+void bring_nodes_to_top(t_stack **a, t_stack **b, int a_n_i, int b_n_i)
+{
+	if (a_n_i <= ft_stacksize(*a) / 2 && b_n_i <= ft_stacksize(*b) / 2)
+  	{
+		while(a_n_i && b_n_i)
+		{
+			rotate_a_b(a, b);
+			a_n_i--;
+			b_n_i--;
+		}
+	}
+	else if (a_n_i > ft_stacksize(*a) / 2 && b_n_i > ft_stacksize(*b) / 2)
+	{
+		a_n_i = ft_stacksize(*a) - a_n_i;
+		b_n_i = ft_stacksize(*b) - b_n_i;
+		while(a_n_i && b_n_i)
+		{
+			revrot_a_b(a, b);
+			a_n_i--;
+			b_n_i--;
+		}
+	}
+	a_bring_node_to_top(a, a_n_i);
+	b_bring_node_to_top(b, b_n_i);
+}
+
 void sort_to_b(t_stack **a, t_stack **b)
 {
 	int cheapest_node_pos;
 	int target_node_pos;
+	t_stack *temp_b;
+	int i;
 
 	while (ft_stacksize(*a) > 3)
 		push_b(a, b);
 	sort_stack_3(a);
 	while (ft_stacksize(*b) > 0)
 	{
-		cheapest_node_pos = find_cheapest_node(*a, *b);
+		/* cheapest_node_pos = find_cheapest_node(*a, *b);
 		b_bring_node_to_top(b, cheapest_node_pos);
 		target_node_pos = find_node_index(*a, find_target_node(*a, *b));
 		a_bring_node_to_top(a, target_node_pos);
+		push_a(a, b); */
+		cheapest_node_pos = find_cheapest_node(*a, *b);
+		i = 0;
+		temp_b = *b;
+		while (i < cheapest_node_pos)
+		{
+			temp_b = temp_b->next;
+			i++;
+		}
+		target_node_pos = find_node_index(*a, find_target_node(*a, temp_b));
+		bring_nodes_to_top(a, b, target_node_pos, cheapest_node_pos);
 		push_a(a, b);
 	} 
 }
