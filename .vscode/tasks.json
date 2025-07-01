@@ -15,7 +15,7 @@
         "libft/libft.a",
         "libft/ft_printf/libftprintf.a",
         "-o",
-        "push"
+        "push_swap"
       ],
       "group": {
         "kind": "build",

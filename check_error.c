@@ -6,11 +6,29 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:46:09 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/01 09:27:56 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/01 09:58:46 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+unsigned int	ft_count_numbers(char const *s, char c)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (s[i] == c)
+		i++;
+	while (s[i] != '\0')
+	{
+		if (s[i] != c && (i == 0 || s[i - 1] == c))
+			count++;
+		i++;
+	}
+	return (count);
+}
 
 int is_valid_number(char *str)
 {
@@ -36,7 +54,9 @@ int check_error(int argc, char **argv)
 	int		num1;
 	long	num2;
 	
-	i = 1;
+	i = 0;
+	if (!is_valid_number(argv[i]))
+		i++;
 	while (i < argc)
 	{
 		if (!is_valid_number(argv[i]))

@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:35:14 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/29 10:45:42 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/01 10:29:16 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,18 @@ int main(int argc, char **argv)
 	t_stack *stack_b;
 	t_stack *temp;
 	
-	if (!argv[1] || argc < 3)
+	if (argc < 2)
 		return (0);
+	if (argc == 2)
+	{
+		argc = ft_count_numbers(argv[1], ' ');
+		argv = ft_split(argv[1], ' ');
+	}
 	if (check_error(argc, argv))
 		return(write(2, "Error\n", 7));
-	stack_a = ft_stacknew(ft_atoi(argv[1]));
+	stack_a = NULL;
 	stack_b = NULL;
-	populate_stack(argc, argv, stack_a);
+	populate_stack(argc, argv, &stack_a);
 	if (check_duplicates(stack_a))
 		return(write(2, "Error\n", 7));
 	turk_algo(&stack_a, &stack_b);
