@@ -6,13 +6,13 @@
 #    By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/04 16:37:48 by ddamiba           #+#    #+#              #
-#    Updated: 2025/06/25 21:16:12 by ddamiba          ###   ########.fr        #
+#    Updated: 2025/07/01 09:38:52 by ddamiba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Project Name
 NAME = push_swap.a
-EXEC = push
+EXEC = push_swap
 
 # Compiler & Tools
 CC = cc

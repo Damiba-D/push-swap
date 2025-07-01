@@ -6,31 +6,41 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:46:09 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/28 16:33:54 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/01 09:27:56 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int is_valid_number(char *str)
+{
+	int i;
+
+	i = 0;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i] != '\0')
+	{
+		if (str[i] == '-' || str[i] == '+')
+			i++;
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int check_error(int argc, char **argv)
 {
 	int		i;
-	int		j;
 	int		num1;
 	long	num2;
 	
 	i = 1;
 	while (i < argc)
 	{
-		j = 0;
-		while (argv[i][j] != '\0')
-		{
-			if (argv[i][j] == '-' || argv[i][j] == '+')
-				j++;
-			if (!ft_isdigit(argv[i][j]))
-				return (-1);
-			j++;
-		}
+		if (!is_valid_number(argv[i]))
+			return (-1);
 		num1 = ft_atoi(argv[i]);
 		num2 = ft_atol(argv[i]);
 		if (num1 != num2)

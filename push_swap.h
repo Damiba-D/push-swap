@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:46:21 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/25 21:56:56 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/01 09:38:13 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_stack	*ft_stacknew(int content);
 int	ft_stacksize(t_stack *stack);
 int check_error(int argc, char **argv);
 int check_duplicates(t_stack *stack);
+int is_valid_number(char *str);
 void populate_stack(int argc, char **argv, t_stack *list);
 void print_stack(t_stack *stack);
 void push_a(t_stack **a, t_stack **b);
