@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:46:21 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/01 10:09:18 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/02 15:00:02 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,8 @@ int find_target_node(t_stack *a, t_stack *b);
 int find_cheapest_node(t_stack *a, t_stack *b);
 void sort_to_b(t_stack **a, t_stack **b);
 void turk_algo(t_stack **a, t_stack **b);
-void	a_bring_node_to_top(t_stack **stack, int node_index);
-void	b_bring_node_to_top(t_stack **stack, int node_index);
-
-
-
-
-
-/* t_list *temp;
-	int tar;
-	
-	temp = *a;
-	tar = ft_atoi((char *)(*b)->content);
-	while (temp != NULL)
-	{
-		int res = ft_atoi((char *)(*a)->content);
-		if (tar > res)
-			tar = res;
-		temp = temp->next;
-	}
-	return (tar); */
-
-
-
-
+void	a_bring_node_to_top(t_stack **stack, int node_index, int rev_flag);
+void	b_bring_node_to_top(t_stack **stack, int node_index, int rev_flag);
+void bring_nodes_to_top(t_stack **a, t_stack **b, int a_n_i, int b_n_i);
+void set_rot_dir(int *node_i, int *rev_flag, int stack_size);
 #endif

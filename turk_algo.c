@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:38:18 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/01 21:16:22 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/02 15:17:57 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,61 +219,68 @@ int find_cheapest_node(t_stack *a, t_stack *b)
 	return (pos_cheapest);
 }
 
-void	a_bring_node_to_top(t_stack **stack, int node_index)
+void	a_bring_node_to_top(t_stack **stack, int node_index, int rev_flag)
 {
-	if (node_index <= ft_stacksize(*stack) / 2)
+	if (!rev_flag)
   	{
 		while(node_index--)
 			rotate_a(stack, 1);
 	}
 	else
 	{
-		node_index = ft_stacksize(*stack) - node_index;
   		while(node_index--)
 			revrot_a(stack, 1);
 	}
 }
 
-void	b_bring_node_to_top(t_stack **stack, int node_index)
+void	b_bring_node_to_top(t_stack **stack, int node_index, int rev_flag)
 {
-	if (node_index <= ft_stacksize(*stack) / 2)
+	if (!rev_flag)
   	{
 		while(node_index--)
 			rotate_b(stack, 1);
 	}
 	else
 	{
-		node_index = ft_stacksize(*stack) - node_index;
   		while(node_index--)
 			revrot_b(stack, 1);
 	}
 }
 
+void set_rot_dir(int *node_i, int *rev_flag, int stack_size)
+{
+	if (*node_i > stack_size / 2)
+	{
+		*rev_flag = 1;
+		*node_i = stack_size - *node_i;
+	}
+}
+
 void bring_nodes_to_top(t_stack **a, t_stack **b, int a_n_i, int b_n_i)
 {
-	if (a_n_i <= ft_stacksize(*a) / 2 && b_n_i <= ft_stacksize(*b) / 2)
-  	{
-		while(a_n_i && b_n_i)
-		{
-			rotate_a_b(a, b);
-			a_n_i--;
-			b_n_i--;
-		}
-	}
-	else if (a_n_i > ft_stacksize(*a) / 2 && b_n_i > ft_stacksize(*b) / 2)
+	int a_rev;
+	int b_rev;
+
+	a_rev = 0;
+	b_rev = 0;
+	set_rot_dir(&a_n_i, &a_rev, ft_stacksize(*a));
+	set_rot_dir(&b_n_i, &b_rev, ft_stacksize(*b));
+	while (a_n_i && b_n_i && !a_rev && !b_rev)
 	{
-		a_n_i = ft_stacksize(*a) - a_n_i;
-		b_n_i = ft_stacksize(*b) - b_n_i;
-		while(a_n_i && b_n_i)
-		{
-			revrot_a_b(a, b);
-			a_n_i--;
-			b_n_i--;
-		}
+		rotate_a_b(a, b);
+		a_n_i--;
+		b_n_i--;
 	}
-	a_bring_node_to_top(a, a_n_i);
-	b_bring_node_to_top(b, b_n_i);
+	while (a_n_i && b_n_i && a_rev && b_rev)
+	{
+		revrot_a_b(a, b);
+		a_n_i--;
+		b_n_i--;
+	}
+	a_bring_node_to_top(a, a_n_i, a_rev);
+	b_bring_node_to_top(b, b_n_i, b_rev);
 }
+
 
 void sort_to_b(t_stack **a, t_stack **b)
 {
@@ -287,11 +294,6 @@ void sort_to_b(t_stack **a, t_stack **b)
 	sort_stack_3(a);
 	while (ft_stacksize(*b) > 0)
 	{
-		/* cheapest_node_pos = find_cheapest_node(*a, *b);
-		b_bring_node_to_top(b, cheapest_node_pos);
-		target_node_pos = find_node_index(*a, find_target_node(*a, *b));
-		a_bring_node_to_top(a, target_node_pos);
-		push_a(a, b); */
 		cheapest_node_pos = find_cheapest_node(*a, *b);
 		i = 0;
 		temp_b = *b;
@@ -309,18 +311,26 @@ void sort_to_b(t_stack **a, t_stack **b)
 
 void turk_algo(t_stack **a, t_stack **b)
 {
-	if (ft_stacksize(*a) == 1)
+	int a_min_pos;
+	int rev_flag;
+	int a_size;
+
+	a_size = ft_stacksize(*a);
+	if (a_size == 1)
 		return ;
-	else if (ft_stacksize(*a) == 2)
+	else if (a_size == 2)
 	{
 		if (!a_is_sorted(*a))
 			return (swap_a(a, 1));
 		return ;
 	}
-	else if (ft_stacksize(*a) == 3)
+	else if (a_size == 3)
 		return (sort_stack_3(a));
 	if (!a_is_sorted(*a))
-		sort_to_b(a, b); 
+		sort_to_b(a, b);
+	a_min_pos = find_min_pos(*a);
+	rev_flag = 0;
+	set_rot_dir(&a_min_pos, &rev_flag, a_size);
 	if (!a_is_sorted(*a))
-		a_bring_node_to_top(a, find_min_pos(*a));
+		a_bring_node_to_top(a, a_min_pos, rev_flag);
 }
