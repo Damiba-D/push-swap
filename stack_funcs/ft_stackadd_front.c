@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:17:28 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/25 17:27:33 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/03 15:37:48 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	ft_stackadd_front(t_stack **stack, t_stack *new)
 		return ;
 	if (*stack == NULL)
 	{
-		*stack = ft_stacknew(new->content);
+		*stack = new;
+		new->next = NULL;
 		return ;
 	}
 	new->next = *stack;

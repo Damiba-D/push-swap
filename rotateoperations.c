@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:16:34 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/25 17:44:41 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/03 15:56:44 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void rotate_a(t_stack **a, int print_flag)
 	temp->next = NULL;
 	ft_stackadd_back(a, temp);
 	if (print_flag)
-		write(1, "ra\n", 4);
+		write(1, "ra\n", 3);
 }
 
 void rotate_b(t_stack **b, int print_flag)
@@ -33,12 +33,12 @@ void rotate_b(t_stack **b, int print_flag)
 	temp->next = NULL;
 	ft_stackadd_back(b, temp);
 	if (print_flag)
-		write(1, "rb\n", 4);
+		write(1, "rb\n", 3);
 }
 
 void rotate_a_b(t_stack **a, t_stack **b)
 {
 	rotate_a(a, 0);
 	rotate_b(b, 0);
-	write(1, "rr\n", 4);
+	write(1, "rr\n", 3);
 }

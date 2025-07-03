@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:38:18 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/03 14:08:13 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/03 15:31:11 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,8 +198,8 @@ int find_cheapest_node(t_stack *a, t_stack *b)
 	int curr_total_cost;
 	int next_total_cost;
 	int pos_cheapest;
-	t_stack *temp_b;
 	int i;
+	t_stack *temp_b;
 
 	pos_cheapest = 0;
 	curr_total_cost = find_total_cost(a, b);
@@ -306,7 +306,7 @@ void sort_to_b(t_stack **a, t_stack **b)
 		target_node_pos = find_node_index(*a, find_target_node(*a, temp_b));
 		bring_nodes_to_top(a, b, target_node_pos, cheapest_node_pos);
 		push_a(a, b);
-	} 
+	}
 }
 
 
