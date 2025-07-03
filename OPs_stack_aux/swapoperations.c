@@ -6,11 +6,11 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:28:13 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/03 15:55:13 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/03 19:07:46 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void swap_a(t_stack **a, int print_flag)
 {

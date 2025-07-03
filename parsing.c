@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:46:09 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/01 09:58:46 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/03 20:32:15 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,34 @@ int check_duplicates(t_stack *stack)
 			temp2 = temp2->next;
 		}
 		stack = stack->next;
+	}
+	return (0);
+}
+
+int parsing(int argc, char **argv, t_stack **stack_a)
+{
+	int was_split;
+	
+	was_split = 0;
+	if (argc == 2)
+	{
+		argc = ft_count_numbers(argv[1], ' ');
+		argv = ft_split(argv[1], ' ');
+		was_split = 1;
+	}
+	if (check_error(argc, argv))
+	{
+		if (was_split)
+			ft_free_arr(argv);
+		return(-1);
+	}
+	populate_stack(argc, argv, stack_a);
+	if (was_split)
+		ft_free_arr(argv);
+	if (check_duplicates(*stack_a))
+	{
+		ft_stackclear(stack_a);
+		return(-1);
 	}
 	return (0);
 }

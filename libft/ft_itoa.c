@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 14:37:30 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/04/26 16:38:00 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/03 21:18:59 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*ft_itoa(int n)
     if (strcmp(result, expected) == 0) {
         printf("PASS: ft_itoa(%d) == \"%s\"\n", input, result);
     } else {
-        printf("FAIL: ft_itoa(%d) == \"%s\", \
+        printf("FAIL: ft_itoa(%d) == \"%s\",
 		expected \"%s\"\n", input, result, expected);
     }
 

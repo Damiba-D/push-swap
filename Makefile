@@ -6,7 +6,7 @@
 #    By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/04 16:37:48 by ddamiba           #+#    #+#              #
-#    Updated: 2025/07/01 09:38:52 by ddamiba          ###   ########.fr        #
+#    Updated: 2025/07/03 20:21:11 by ddamiba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,10 @@ LIBFT_DIR = libft
 GNL_DIR = $(LIBFT_DIR)/get_next_line
 PRINTF_DIR = $(LIBFT_DIR)/ft_printf
 STACK_DIR = stack_funcs
+CALC_DIR = Calculations
+MOV_DIR = Movement_funcs
+STACK_AUX_DIR = OPs_stack_aux
+SORT_AUX_DIR = Sorting_aux
 
 # Libraries
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -32,9 +36,20 @@ GNL = $(GNL_DIR)/get_next_line.a
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 # Sources and Objects
-SRC = turk_algo.c \
-	  revrotoperations.c rotateoperations.c swapoperations.c pushoperations.c \
-	  check_error.c populate_stack.c print_stack.c push_swap.c \
+SRC = algo.c \
+	  parsing.c \
+	  push_swap.c \
+	  $(CALC_DIR)/cost_funcs.c \
+	  $(CALC_DIR)/find_min_max.c \
+	  $(CALC_DIR)/find_nodes.c \
+	  $(MOV_DIR)/movement_funcs.c \
+	  $(STACK_AUX_DIR)/populate_stack.c \
+	  $(STACK_AUX_DIR)/print_stack.c \
+	  $(STACK_AUX_DIR)/pushoperations.c \
+	  $(STACK_AUX_DIR)/revrotoperations.c \
+	  $(STACK_AUX_DIR)/rotateoperations.c \
+	  $(STACK_AUX_DIR)/swapoperations.c \
+	  $(SORT_AUX_DIR)/sorting_aux.c \
 	  $(STACK_DIR)/ft_stackadd_back.c \
 	  $(STACK_DIR)/ft_stackadd_front.c \
 	  $(STACK_DIR)/ft_stackclear.c \

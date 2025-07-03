@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:46:21 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/03 17:26:59 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/03 20:28:49 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ t_stack	*ft_stackmap(t_stack *stack, int (*f)(int));
 t_stack	*ft_stacknew(int content);
 int	ft_stacksize(t_stack *stack);
 
-//Error handlers
+//Parsing
 int check_error(int argc, char **argv);
 int check_duplicates(t_stack *stack);
 int is_valid_number(char *str);
 unsigned int	ft_count_numbers(char const *s, char c);
 void	ft_free_arr(char **arr);
+int parsing(int argc, char **argv, t_stack **stack_a);
 
 //Stack aux funcs & operations
 void populate_stack(int argc, char **argv, t_stack **stack);

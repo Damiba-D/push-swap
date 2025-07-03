@@ -6,11 +6,11 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 17:51:50 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/06/25 18:02:15 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/03 19:07:36 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void revrot_a(t_stack **a, int print_flag)
 {

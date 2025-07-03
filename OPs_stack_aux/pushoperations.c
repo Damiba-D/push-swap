@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   populate_stack.c                                   :+:      :+:    :+:   */
+/*   pushoperations.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 15:43:39 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/01 10:15:24 by ddamiba          ###   ########.fr       */
+/*   Created: 2025/06/06 14:49:54 by ddamiba           #+#    #+#             */
+/*   Updated: 2025/07/03 19:07:32 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void populate_stack(int argc, char **argv, t_stack **stack)
+void push_a(t_stack **a, t_stack **b)
 {
-	t_stack *temp_1;
-	t_stack *temp_2;
-	int i;
+	t_stack *newnode;
+	
+	if (ft_stacksize(*b) == 0)
+		return ;
+	newnode = *b;
+	*b = (*b)->next;
+	ft_stackadd_front(a, newnode);
+	write(1, "pa\n", 3);
+}
 
-	i = 0;
-	if (!is_valid_number(argv[i]))
-		i++;
-	if ((*stack) == NULL)
-	{
-		(*stack) = ft_stacknew(ft_atoi(argv[i]));
-		i++;
-	}
-	temp_1 = *stack;
-	while(i < argc)
-	{
-		temp_2 = ft_stacknew(ft_atoi(argv[i]));
-		temp_1->next = temp_2;
-		temp_1 = temp_1->next;
-		i++;
-	}
+void push_b(t_stack **a, t_stack **b)
+{
+	t_stack *newnode;
+	
+	if (ft_stacksize(*a) == 0)
+		return ;
+	newnode = *a;
+	*a = (*a)->next;
+	ft_stackadd_front(b, newnode);
+	write(1, "pb\n", 3);
 }
