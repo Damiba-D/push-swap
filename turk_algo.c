@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:38:18 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/02 15:17:57 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/03 14:08:13 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,10 +289,11 @@ void sort_to_b(t_stack **a, t_stack **b)
 	t_stack *temp_b;
 	int i;
 
-	while (ft_stacksize(*a) > 3)
+	while (ft_stacksize(*a) > 3 && !a_is_sorted(*a))
 		push_b(a, b);
-	sort_stack_3(a);
-	while (ft_stacksize(*b) > 0)
+	if (ft_stacksize(*a) == 3)
+		sort_stack_3(a);
+	while (*b != NULL)
 	{
 		cheapest_node_pos = find_cheapest_node(*a, *b);
 		i = 0;
