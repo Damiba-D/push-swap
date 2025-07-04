@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 19:15:57 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/03 19:17:05 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/04 21:14:44 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	b_is_sorted(t_stack *b)
 	return (1);
 }
 
-void set_rot_dir(int *node_i, int *rev_flag, int stack_size)
+void	set_rot_dir(int *node_i, int *rev_flag, int stack_size)
 {
 	if (*node_i > stack_size / 2)
 	{

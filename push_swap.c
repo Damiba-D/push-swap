@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:35:14 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/04 17:59:34 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/04 21:21:25 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free_arr(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i] != NULL)
@@ -26,10 +26,10 @@ void	ft_free_arr(char **arr)
 	free(arr);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -38,9 +38,6 @@ int main(int argc, char **argv)
 	if (parsing(argc, argv, &stack_a))
 		return (write(2, "Error\n", 6));
 	turk_algo(&stack_a, &stack_b);
- 	/* if (a_is_sorted(stack_a))
-		ft_printf("A IS SORTED!\n"); */
-	//print_stack(stack_a);
 	ft_stackclear(&stack_a);
 	ft_stackclear(&stack_b);
 }

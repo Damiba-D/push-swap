@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk_algo.c                                        :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 15:38:18 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/03 19:18:58 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/04 21:17:40 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	sort_stack_3(t_stack **a)
 		return (revrot_a(a, 1));
 }
 
-void sort_to_b(t_stack **a, t_stack **b)
+void	sort_to_b(t_stack **a, t_stack **b)
 {
-	int cheapest_node_pos;
-	int target_node_pos;
-	t_stack *temp_b;
-	int i;
+	int		cheapest_node_pos;
+	int		target_node_pos;
+	t_stack	*temp_b;
+	int		i;
 
 	while (ft_stacksize(*a) > 3 && !a_is_sorted(*a))
 		push_b(a, b);
@@ -63,12 +63,11 @@ void sort_to_b(t_stack **a, t_stack **b)
 	}
 }
 
-
-void turk_algo(t_stack **a, t_stack **b)
+void	turk_algo(t_stack **a, t_stack **b)
 {
-	int a_min_pos;
-	int rev_flag;
-	int a_size;
+	int	a_min_pos;
+	int	rev_flag;
+	int	a_size;
 
 	a_size = ft_stacksize(*a);
 	if (a_size == 1)

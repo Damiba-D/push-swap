@@ -6,16 +6,16 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 14:49:54 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/03 19:07:32 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/04 21:10:13 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void push_a(t_stack **a, t_stack **b)
+void	push_a(t_stack **a, t_stack **b)
 {
-	t_stack *newnode;
-	
+	t_stack	*newnode;
+
 	if (ft_stacksize(*b) == 0)
 		return ;
 	newnode = *b;
@@ -24,10 +24,10 @@ void push_a(t_stack **a, t_stack **b)
 	write(1, "pa\n", 3);
 }
 
-void push_b(t_stack **a, t_stack **b)
+void	push_b(t_stack **a, t_stack **b)
 {
-	t_stack *newnode;
-	
+	t_stack	*newnode;
+
 	if (ft_stacksize(*a) == 0)
 		return ;
 	newnode = *a;

@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:46:09 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/03 20:32:15 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/04 21:20:07 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ unsigned int	ft_count_numbers(char const *s, char c)
 	return (count);
 }
 
-int is_valid_number(char *str)
+int	is_valid_number(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == '\0')
@@ -48,12 +48,12 @@ int is_valid_number(char *str)
 	return (1);
 }
 
-int check_error(int argc, char **argv)
+int	check_error(int argc, char **argv)
 {
 	int		i;
 	int		num1;
 	long	num2;
-	
+
 	i = 0;
 	if (!is_valid_number(argv[i]))
 		i++;
@@ -70,11 +70,11 @@ int check_error(int argc, char **argv)
 	return (0);
 }
 
-int check_duplicates(t_stack *stack)
+int	check_duplicates(t_stack *stack)
 {
-	t_stack *temp1;
-	t_stack *temp2;
-	
+	t_stack	*temp1;
+	t_stack	*temp2;
+
 	while (stack)
 	{
 		temp1 = stack;
@@ -92,10 +92,10 @@ int check_duplicates(t_stack *stack)
 	return (0);
 }
 
-int parsing(int argc, char **argv, t_stack **stack_a)
+int	parsing(int argc, char **argv, t_stack **stack_a)
 {
-	int was_split;
-	
+	int	was_split;
+
 	was_split = 0;
 	if (argc == 2)
 	{
@@ -107,7 +107,7 @@ int parsing(int argc, char **argv, t_stack **stack_a)
 	{
 		if (was_split)
 			ft_free_arr(argv);
-		return(-1);
+		return (-1);
 	}
 	populate_stack(argc, argv, stack_a);
 	if (was_split)
@@ -115,7 +115,7 @@ int parsing(int argc, char **argv, t_stack **stack_a)
 	if (check_duplicates(*stack_a))
 	{
 		ft_stackclear(stack_a);
-		return(-1);
+		return (-1);
 	}
 	return (0);
 }

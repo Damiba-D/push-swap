@@ -6,16 +6,16 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 18:16:34 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/03 19:07:40 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/04 21:12:06 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void rotate_a(t_stack **a, int print_flag)
+void	rotate_a(t_stack **a, int print_flag)
 {
-	t_stack *temp;
-	
+	t_stack	*temp;
+
 	temp = *a;
 	*a = (*a)->next;
 	temp->next = NULL;
@@ -24,10 +24,10 @@ void rotate_a(t_stack **a, int print_flag)
 		write(1, "ra\n", 3);
 }
 
-void rotate_b(t_stack **b, int print_flag)
+void	rotate_b(t_stack **b, int print_flag)
 {
-	t_stack *temp;
-	
+	t_stack	*temp;
+
 	temp = *b;
 	*b = (*b)->next;
 	temp->next = NULL;
@@ -36,7 +36,7 @@ void rotate_b(t_stack **b, int print_flag)
 		write(1, "rb\n", 3);
 }
 
-void rotate_a_b(t_stack **a, t_stack **b)
+void	rotate_a_b(t_stack **a, t_stack **b)
 {
 	rotate_a(a, 0);
 	rotate_b(b, 0);

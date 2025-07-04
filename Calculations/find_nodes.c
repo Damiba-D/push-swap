@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 19:07:01 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/04 17:57:36 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/04 21:03:48 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	find_target_node(t_stack *a, t_stack *b)
 		return (a_min->content);
 	return (target_node);
 }
-void set_curr_cost(int *curr, int next, int *pos, int i)
+
+void	set_curr_cost(int *curr, int next, int *pos, int i)
 {
 	if (next < *curr)
 	{
@@ -76,7 +77,8 @@ int	find_cheapest_node(t_stack *a, t_stack *b)
 		if (i <= ft_stacksize(b) / 2)
 			next_total_cost = find_total_cost(a, temp_b) + i;
 		else
-			next_total_cost = find_total_cost(a, temp_b) + (ft_stacksize(b) - i);
+			next_total_cost = find_total_cost(a, temp_b) \
++ (ft_stacksize(b) - i);
 		set_curr_cost(&curr_total_cost, next_total_cost, &pos_cheapest, i);
 		i++;
 		temp_b = temp_b->next;

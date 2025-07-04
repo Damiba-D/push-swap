@@ -1,7 +1,6 @@
 ARG=0
 for i in {1..500}
 do
-	ARG=$(shuf -i 1-500 | xargs)
+	ARG=$(shuf -i 1-1000 -n 100 | xargs)
 	./push_swap $ARG | ./checker_linux $ARG; 
 done
-echo $ARG
