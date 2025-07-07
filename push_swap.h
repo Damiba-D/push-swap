@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:46:21 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/04 21:28:02 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/07 10:57:25 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_stack **b, int a_n_i, int b_n_i);
 
 //Algo funcs
 void			sort_stack_3(t_stack **a);
-void			sort_to_b(t_stack **a, t_stack **b);
+void			sort(t_stack **a, t_stack **b);
 void			turk_algo(t_stack **a, t_stack **b);
 
 #endif
