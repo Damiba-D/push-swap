@@ -6,7 +6,7 @@
 /*   By: ddamiba <ddamiba@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:46:09 by ddamiba           #+#    #+#             */
-/*   Updated: 2025/07/04 21:20:07 by ddamiba          ###   ########.fr       */
+/*   Updated: 2025/07/07 14:35:09 by ddamiba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ int	is_valid_number(char *str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return (0);
+	if (str[i] == '-' || str[i] == '+')
+		i++;
 	if (str[i] == '\0')
 		return (0);
 	while (str[i] != '\0')
 	{
-		if (str[i] == '-' || str[i] == '+')
-			i++;
 		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
@@ -57,6 +59,8 @@ int	check_error(int argc, char **argv)
 	i = 0;
 	if (!is_valid_number(argv[i]))
 		i++;
+	if (!is_valid_number(argv[i]))
+		return (-1);
 	while (i < argc)
 	{
 		if (!is_valid_number(argv[i]))
@@ -103,7 +107,7 @@ int	parsing(int argc, char **argv, t_stack **stack_a)
 		argv = ft_split(argv[1], ' ');
 		was_split = 1;
 	}
-	if (check_error(argc, argv))
+	if (check_error(argc, argv) || (!argc && was_split))
 	{
 		if (was_split)
 			ft_free_arr(argv);
